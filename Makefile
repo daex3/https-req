@@ -20,7 +20,3 @@ mac:
 
 r:
 	./out
-
-tra: rel
-	strace ./out -m 30000 -o arch.html archlinux.org > dump 2>&1
-	vim -c '%s/mprot/mprot/g' -c '1,.d' -c 'w' dump
