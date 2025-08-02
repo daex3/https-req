@@ -1,0 +1,91 @@
+munmap(0x7ff99398c000, 58871)           = 0
+rt_sigprocmask(SIG_BLOCK, [HUP USR1 USR2 PIPE ALRM CHLD TSTP URG VTALRM PROF WINCH IO], [], 8) = 0
+futex(0x7ff99361b0ec, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+socket(AF_UNIX, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 3
+connect(3, {sa_family=AF_UNIX, sun_path="/run/systemd/resolve/io.systemd.Resolve"}, 42) = 0
+sendto(3, "{\"method\":\"io.systemd.Resolve.Re"..., 96, MSG_DONTWAIT|MSG_NOSIGNAL, NULL, 0) = 96
+mmap(NULL, 135168, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7ff9935c9000
+recvfrom(3, 0x7ff9935c9010, 135152, MSG_DONTWAIT, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+ppoll([{fd=3, events=POLLIN}], 1, {tv_sec=119, tv_nsec=999845000}, NULL, 8) = 1 ([{fd=3, revents=POLLIN}], left {tv_sec=119, tv_nsec=953138164})
+recvfrom(3, "{\"parameters\":{\"addresses\":[{\"if"..., 135152, MSG_DONTWAIT, NULL, NULL) = 201
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+close(3)                                = 0
+munmap(0x7ff9935c9000, 135168)          = 0
+openat(AT_FDCWD, "/etc/gai.conf", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=2584, ...}) = 0
+fstat(3, {st_mode=S_IFREG|0644, st_size=2584, ...}) = 0
+read(3, "# Configuration for getaddrinfo("..., 4096) = 2584
+read(3, "", 4096)                       = 0
+close(3)                                = 0
+futex(0x7ff9938a2e04, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+socket(AF_NETLINK, SOCK_RAW|SOCK_CLOEXEC, NETLINK_ROUTE) = 3
+bind(3, {sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, 12) = 0
+getsockname(3, {sa_family=AF_NETLINK, nl_pid=295880, nl_groups=00000000}, [12]) = 0
+sendto(3, [{nlmsg_len=20, nlmsg_type=RTM_GETADDR, nlmsg_flags=NLM_F_REQUEST|NLM_F_DUMP, nlmsg_seq=1751866265, nlmsg_pid=0}, {ifa_family=AF_UNSPEC, ...}], 20, 0, {sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, 12) = 20
+recvmsg(3, {msg_name={sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, msg_namelen=12, msg_iov=[{iov_base=[[{nlmsg_len=76, nlmsg_type=RTM_NEWADDR, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1751866265, nlmsg_pid=295880}, {ifa_family=AF_INET, ifa_prefixlen=8, ifa_flags=IFA_F_PERMANENT, ifa_scope=RT_SCOPE_HOST, ifa_index=if_nametoindex("lo")}, [[{nla_len=8, nla_type=IFA_ADDRESS}, inet_addr("127.0.0.1")], [{nla_len=8, nla_type=IFA_LOCAL}, inet_addr("127.0.0.1")], [{nla_len=7, nla_type=IFA_LABEL}, "lo"], [{nla_len=8, nla_type=IFA_FLAGS}, IFA_F_PERMANENT], [{nla_len=20, nla_type=IFA_CACHEINFO}, {ifa_prefered=4294967295, ifa_valid=4294967295, cstamp=368, tstamp=368}]]], [{nlmsg_len=96, nlmsg_type=RTM_NEWADDR, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1751866265, nlmsg_pid=295880}, {ifa_family=AF_INET, ifa_prefixlen=24, ifa_flags=0, ifa_scope=RT_SCOPE_UNIVERSE, ifa_index=if_nametoindex("eno1")}, [[{nla_len=8, nla_type=IFA_ADDRESS}, inet_addr("192.168.100.2")], [{nla_len=8, nla_type=IFA_LOCAL}, inet_addr("192.168.100.2")], [{nla_len=8, nla_type=IFA_BROADCAST}, inet_addr("192.168.100.255")], [{nla_len=9, nla_type=IFA_LABEL}, "eno1"], [{nla_len=8, nla_type=IFA_FLAGS}, 0], [{nla_len=8, nla_type=IFA_RT_PRIORITY}, 100], [{nla_len=20, nla_type=IFA_CACHEINFO}, {ifa_prefered=51468, ifa_valid=51468, cstamp=53812419, tstamp=58132508}]]], [{nlmsg_len=72, nlmsg_type=RTM_NEWADDR, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1751866265, nlmsg_pid=295880}, {ifa_family=AF_INET6, ifa_prefixlen=128, ifa_flags=IFA_F_PERMANENT, ifa_scope=RT_SCOPE_HOST, ifa_index=if_nametoindex("lo")}, [[{nla_len=20, nla_type=IFA_ADDRESS}, inet_pton(AF_INET6, "::1")], [{nla_len=20, nla_type=IFA_CACHEINFO}, {ifa_prefered=4294967295, ifa_valid=4294967295, cstamp=368, tstamp=368}], [{nla_len=8, nla_type=IFA_FLAGS}, IFA_F_PERMANENT|IFA_F_NOPREFIXROUTE]]], [{nlmsg_len=80, nlmsg_type=RTM_NEWADDR, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1751866265, nlmsg_pid=295880}, {ifa_family=AF_INET6, ifa_prefixlen=64, ifa_flags=IFA_F_PERMANENT, ifa_scope=RT_SCOPE_LINK, ifa_index=if_nametoindex("eno1")}, [[{nla_len=20, nla_type=IFA_ADDRESS}, inet_pton(AF_INET6, "fe80::3e7c:3fff:febd:91a6")], [{nla_len=20, nla_type=IFA_CACHEINFO}, {ifa_prefered=4294967295, ifa_valid=4294967295, cstamp=957, tstamp=957}], [{nla_len=8, nla_type=IFA_FLAGS}, IFA_F_PERMANENT], [{nla_len=5, nla_type=IFA_PROTO}, "\x03"]]]], iov_len=4096}], msg_iovlen=1, msg_controllen=0, msg_flags=0}, 0) = 324
+recvmsg(3, {msg_name={sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, msg_namelen=12, msg_iov=[{iov_base=[{nlmsg_len=20, nlmsg_type=NLMSG_DONE, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1751866265, nlmsg_pid=295880}, 0], iov_len=4096}], msg_iovlen=1, msg_controllen=0, msg_flags=0}, 0) = 20
+close(3)                                = 0
+socket(AF_INET6, SOCK_DGRAM|SOCK_CLOEXEC, IPPROTO_IP) = 3
+connect(3, {sa_family=AF_INET6, sin6_port=htons(443), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "2a01:4f9:c010:6b1f::1", &sin6_addr), sin6_scope_id=0}, 28) = 0
+getsockname(3, {sa_family=AF_INET6, sin6_port=htons(60446), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "fe80::3e7c:3fff:febd:91a6", &sin6_addr), sin6_scope_id=0}, [28]) = 0
+connect(3, {sa_family=AF_UNSPEC, sa_data="\0\0\0\0\0\0\0\0\0\0\0\0\0\0"}, 16) = 0
+connect(3, {sa_family=AF_INET, sin_port=htons(443), sin_addr=inet_addr("95.217.163.246")}, 16) = 0
+getsockname(3, {sa_family=AF_INET6, sin6_port=htons(37547), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:192.168.100.2", &sin6_addr), sin6_scope_id=0}, [28]) = 0
+close(3)                                = 0
+socket(AF_INET, SOCK_STREAM, IPPROTO_TCP) = 3
+connect(3, {sa_family=AF_INET, sin_port=htons(443), sin_addr=inet_addr("95.217.163.246")}, 16) = 0
+setsockopt(3, SOL_TCP, TCP_ULP, [7564404], 4) = -1 ENOENT (No such file or directory)
+getpid()                                = 295880
+getpid()                                = 295880
+getpid()                                = 295880
+getpid()                                = 295880
+getpid()                                = 295880
+write(3, "\26\3\1\6\5\1\0\6\1\3\3R\342\333\275\267Y\364(\301\261\262\201\216D\344\243\vdw\3001"..., 1546) = 1546
+brk(0x563412f4c000)                     = 0x563412f4c000
+read(3, "\26\3\3\4\272", 5)             = 5
+read(3, "\2\0\4\266\3\3\226|\231H\353,l\330]5\\\20\34\215\365\2308x\252\2375mDq>p"..., 1210) = 1210
+read(3, "\24\3\3\0\1", 5)               = 5
+read(3, "\1", 1)                        = 1
+read(3, "\27\3\3\0\33", 5)              = 5
+read(3, "\10\244\237\3\300\22\35\222\315\327\364\20\3557\352\25\31\270\244)Z;\260\340\372\254\303", 27) = 27
+read(3, "\27\3\3\10f", 5)               = 5
+read(3, "Yf\v\37\20\r;\2SX\354\310u\305\332\252J\32!\202\350\301H\341\231VA45\361\246\345"..., 2150) = 2150
+openat(AT_FDCWD, "/etc/localtime", O_RDONLY|O_CLOEXEC) = 4
+fstat(4, {st_mode=S_IFREG|0644, st_size=1062, ...}) = 0
+fstat(4, {st_mode=S_IFREG|0644, st_size=1062, ...}) = 0
+read(4, "TZif2\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 4096) = 1062
+lseek(4, -657, SEEK_CUR)                = 405
+read(4, "TZif2\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 4096) = 657
+close(4)                                = 0
+read(3, "\27\3\3\0a", 5)                = 5
+read(3, "\345\256f\261`\f\223\332\3320l\211)\24\t)1\327\6E)-\177\373q\373\22K\366\306\247@"..., 97) = 97
+read(3, "\27\3\3\0E", 5)                = 5
+read(3, "\24\265\3|\327]_\327\22\200#H]%;\321D\244\346\22\26\245?\354F\177\26\"\323+\373O"..., 69) = 69
+write(3, "\24\3\3\0\1\1\27\3\3\0E\251n\310U\17MH\266R\202\275\352\330\357\2532UH\246\337b"..., 80) = 80
+write(3, "\27\3\3\4\21'{\367|\272\335\357\210K\32\376\0\235N\213\270\366\21\223\240ir\323\35\367\230E"..., 1046) = 1046
+read(3, "\27\3\3\0J", 5)                = 5
+read(3, "U\376\320uPO\365\303\372\321\35\221\363\220%w,'\32\244\4\330\27{\210\222}\273[\246\3\22"..., 74) = 74
+brk(0x563412f6d000)                     = 0x563412f6d000
+read(3, "\27\3\3\0J", 5)                = 5
+read(3, "\244\2524E\334\247\316\246\214\26\351\222[\273Q\370\305\26X\233^X\37CF!\222\201c$Y\232"..., 74) = 74
+read(3, "\27\3\3@\21", 5)               = 5
+read(3, "\224lJJG\300vg\207\6\270&\360K<\266,\360\247\5\216\271\323\335\252CR\235\331e/\276"..., 16401) = 11515
+read(3, "b*\241\222\6T\254\353a\37\301\1\227\275\267I\260\337;\213\262&\374\250\351\237\327\v\34\3702G"..., 4886) = 4320
+read(3, "\250\3(\210D\371\334|\323'\16\224\332\212S//\277\1\223\312+\277U\0K\345\2650\200\266\313"..., 566) = 566
+read(3, "\27\3\3\"\307", 5)             = 5
+read(3, "\33\230\273\21\247E@\240w[\314?\22mN6\207\1\27\303Y}\2168}\2021\302\305\310\361o"..., 8903) = 8903
+read(3, "\27\3\3\0\23", 5)              = 5
+read(3, "t\3\316bG\227\361\251\304\350\t\322>\251\312(V;\262", 19) = 19
+close(3)                                = 0
+openat(AT_FDCWD, "arch.html", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+lseek(3, 0, SEEK_END)                   = 24593
+fstat(3, {st_mode=S_IFREG|0644, st_size=24593, ...}) = 0
+write(3, "HTTP/1.1 200 OK\r\nServer: nginx\r\n"..., 24576) = 24576
+write(3, "            title=\"Arch Linux Tr"..., 694) = 694
+close(3)                                = 0
+write(1, "archlinux.org\n+ 16384 | 16384 / "..., 61archlinux.org
++ 16384 | 16384 / 30000
++ 8886 | 25270 / 30000
+) = 61
+exit_group(0)                           = ?
++++ exited with 0 +++
