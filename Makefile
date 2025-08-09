@@ -1,6 +1,6 @@
-CFLAGS = -o out -lssl
-MAIN = main.c
-CC = clang
+CFLAGS	= -o out -Wall -Wextra -Werror
+MAIN	= a.c
+CC	= gcc
 
 all: rel r
 
@@ -11,12 +11,14 @@ bin: rel
 	doas cp -i out /usr/bin/$(name)
 
 rel:
-	$(CC) $(CFLAGS) -O3 $(MAIN)
+	$(CC) -O3 $(MAIN) $(CFLAGS)
 d:
-	$(CC) $(CFLAGS) -g $(MAIN)
-
+	$(CC) -g $(MAIN) $(CFLAGS)
 mac:
 	$(CC) -dM -E $(MAIN)
+sca:
+	scan-build -v -V make rel
+	clang-tidy $(MAIN) -- -I.
 
 r:
 	./out

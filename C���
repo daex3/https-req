@@ -1,8 +1,0 @@
-HTTP/1.1 302 Found
-Date: Mon, 07 Jul 2025 11:01:48 GMT
-Connection: close
-Location: http://slither.io/?a
-Server: cloudflare
-CF-RAY: 95b6d88fbdd9a7a5-EZE
-
-lither.io
