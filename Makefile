@@ -1,4 +1,4 @@
-CFLAGS	= -o out -Wall -Wextra -Werror
+CFLAGS	= -o out -Wall -Wextra -Werror -lssl
 MAIN	= a.c
 CC	= gcc
 
