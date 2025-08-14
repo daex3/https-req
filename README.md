@@ -6,5 +6,5 @@ sudo ln -s $PWD/https-req.c /usr/include/https-req.c
 make bin name=https-req
 https-req abc.com
 ```
-\#\# Libs
+## Libs
 - openssl
