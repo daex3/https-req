@@ -8,3 +8,11 @@ https-req abc.com
 ```
 ## Libs
 - openssl
+## Example
+```c
+#include <https-req.c>
+
+int main() {
+	char *s = simply_download("github.com", 30000);
+}
+```
